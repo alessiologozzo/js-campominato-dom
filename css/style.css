@@ -1,0 +1,151 @@
+:root{
+    --bg-main: #7fffd4;
+    --cell_size: 35px;
+}
+
+header img{
+    width: 4rem;
+}
+
+.al-button{
+    padding: 0.3rem 0.7rem;
+    background-color: blueviolet;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    transition: transform 300ms;
+}
+
+.al-button:hover{
+    color: rgb(179, 243, 179);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+main{
+    background-color: var(--bg-main);
+}
+
+.al-cell{
+    width: var(--cell_size);
+    height: var(--cell_size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    background-color: lightgrey;
+    font-weight: bold;
+    font-size: calc(var(--cell_size) / 1.6);
+}
+
+.al-active{
+    transition: background-color 300ms;
+}
+
+.al-active:hover{
+    cursor: pointer;
+    background-color: violet;
+    border: 2px solid blueviolet;
+}
+
+.al-bomb{
+    background-image: url("../img/bomb.svg");
+    background-repeat: no-repeat;
+    background-size: var(--cell_size);
+    background-position: center;
+}
+
+.al-question-mark{
+    background-image: url("../img/question-mark.svg");
+    background-repeat: no-repeat;
+    background-size: calc(var(--cell_size) / 1.6);
+    background-position: center;
+}
+
+.al-cross-mark{
+    background-image: url("../img/cross-mark.svg");
+    background-repeat: no-repeat;
+    background-size: calc(var(--cell_size) / 1.5);
+    background-position: center;
+}
+
+.al-mex{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.al-mex::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 3px solid red;
+    border-radius: 10px;
+    opacity: 0.3;
+    transition: transform 300ms;
+}
+
+.al-game-mex{
+    width: calc(var(--cell_size) * 4);
+    padding: calc(var(--cell_size) / 2);
+    opacity: 0.9;
+    transition: transform 300ms;
+}
+
+.al-game-mex:hover, .al-mex:hover::before{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.al-0{
+    color:blue;
+}
+
+.al-1{
+    color: rgb(124, 42, 201);
+}
+
+.al-2{
+    color: green;
+}
+
+.al-3{
+    color: rgb(214, 18, 18)
+}
+
+.al-4{
+    color: rgb(124, 0, 0);
+}
+
+.al-default{
+    color: black;
+}
+
+@media screen and (min-width: 576px){
+    :root{
+        --cell_size: 40px;
+    }
+}
+
+@media screen and (min-width: 768px){
+    :root{
+        --cell_size: 45px;
+    }
+}
+
+@media screen and (min-width: 992px){
+    :root{
+        --cell_size: 50px;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    :root{
+        --cell_size: 55px;
+    }
+}
