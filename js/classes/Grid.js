@@ -45,70 +45,29 @@ export class Grid{
 
     #setBombsTouched(indexRow, indexCol){
 
-        if(indexRow == 0){
-            if(indexCol == 0){ //Angolo alto a sinistra
-                this.cell[indexRow][indexCol + 1].bombsTouched++;
-                this.cell[indexRow + 1][indexCol].bombsTouched++;
-                this.cell[indexRow + 1][indexCol + 1].bombsTouched++;
-            }
-            else if(indexCol == this.cell[indexRow].length - 1){ //Angolo alto destra
-                this.cell[indexRow][indexCol - 1].bombsTouched++;
-                this.cell[indexRow + 1][indexCol].bombsTouched++;
-                this.cell[indexRow + 1][indexCol - 1].bombsTouched++;
-            }
-            else{ //Prima riga
-                this.cell[indexRow][indexCol - 1].bombsTouched++;
-                this.cell[indexRow][indexCol + 1].bombsTouched++;
-                this.cell[indexRow + 1][indexCol - 1].bombsTouched++;
-                this.cell[indexRow + 1][indexCol].bombsTouched++;
-                this.cell[indexRow + 1][indexCol + 1].bombsTouched++;
-            }
-        }
-        else if(indexRow == this.cell.length - 1){
-            if(indexCol == 0){ //Angolo basso sinistra
-                this.cell[indexRow][indexCol + 1].bombsTouched++;
-                this.cell[indexRow - 1][indexCol].bombsTouched++;
-                this.cell[indexRow - 1][indexCol + 1].bombsTouched++;
-            }
-            else if(indexCol == this.cell[indexRow].length - 1){ //Angolo basso destra
-                this.cell[indexRow][indexCol - 1].bombsTouched++;
-                this.cell[indexRow - 1][indexCol].bombsTouched++;
-                this.cell[indexRow - 1][indexCol - 1].bombsTouched++;
-            }
-            else{ //Ultima riga
-                this.cell[indexRow][indexCol - 1].bombsTouched++;
-                this.cell[indexRow][indexCol + 1].bombsTouched++;
-                this.cell[indexRow - 1][indexCol - 1].bombsTouched++;
-                this.cell[indexRow - 1][indexCol].bombsTouched++;
-                this.cell[indexRow - 1][indexCol + 1].bombsTouched++;
-            }
-        }
-        else{
-            if(indexCol == 0){ //Prima colonna
-                this.cell[indexRow][indexCol + 1].bombsTouched++;
-                this.cell[indexRow - 1][indexCol].bombsTouched++;
-                this.cell[indexRow - 1][indexCol + 1].bombsTouched++;
-                this.cell[indexRow + 1][indexCol].bombsTouched++;
-                this.cell[indexRow + 1][indexCol + 1].bombsTouched++;
-            }
-            else if(indexCol == this.cell[indexRow].length - 1){ //Ultima colonna
-                this.cell[indexRow][indexCol - 1].bombsTouched++;
-                this.cell[indexRow - 1][indexCol].bombsTouched++;
-                this.cell[indexRow - 1][indexCol - 1].bombsTouched++;
-                this.cell[indexRow + 1][indexCol].bombsTouched++;
-                this.cell[indexRow + 1][indexCol - 1].bombsTouched++;
-            }
-            else{ //Tutte le celle interne
-                this.cell[indexRow][indexCol - 1].bombsTouched++;
-                this.cell[indexRow][indexCol + 1].bombsTouched++;
-                this.cell[indexRow - 1][indexCol - 1].bombsTouched++;
-                this.cell[indexRow - 1][indexCol].bombsTouched++;
-                this.cell[indexRow - 1][indexCol + 1].bombsTouched++;
-                this.cell[indexRow + 1][indexCol - 1].bombsTouched++;
-                this.cell[indexRow + 1][indexCol].bombsTouched++;
-                this.cell[indexRow + 1][indexCol + 1].bombsTouched++;
-            }
-        }
+        if(indexCol - 1 >= 0) //Per ogni posizione verifico che sia valida
+            this.cell[indexRow][indexCol - 1].bombsTouched++;
+
+        if(indexCol + 1 < this.cell[indexRow].length)
+            this.cell[indexRow][indexCol + 1].bombsTouched++;
+
+        if(indexRow - 1 >= 0 && indexCol - 1 >= 0)
+            this.cell[indexRow - 1 ][indexCol - 1].bombsTouched++;
+
+        if(indexRow - 1 >= 0)
+            this.cell[indexRow - 1][indexCol].bombsTouched++;
+
+        if(indexRow - 1 >= 0 && indexCol + 1 < this.cell[indexRow].length)
+            this.cell[indexRow - 1][indexCol + 1].bombsTouched++;
+
+        if(indexRow + 1 < this.cell.length && indexCol - 1 >= 0)
+            this.cell[indexRow + 1][indexCol - 1].bombsTouched++;
+
+        if(indexRow + 1 < this.cell.length)
+            this.cell[indexRow + 1][indexCol].bombsTouched++;
+
+        if(indexRow + 1 < this.cell.length && indexCol + 1 < this.cell[indexRow].length)
+            this.cell[indexRow + 1][indexCol + 1].bombsTouched++;
     }
 
     draw(){
