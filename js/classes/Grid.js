@@ -94,7 +94,6 @@ export class Grid{
                 if(this.cell[i][i2].hasBomb && this.cell[i][i2].element.classList.contains("al-question-mark")){
                     this.cell[i][i2].element.classList.remove("al-question-mark");
                     this.cell[i][i2].element.classList.add("al-bomb");
-                    console.log("prova provetta");
                 }
                 else if(this.cell[i][i2].hasBomb && !this.cell[i][i2].element.classList.contains("al-bomb"))
                     this.cell[i][i2].element.classList.add("al-bomb");
