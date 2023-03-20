@@ -85,7 +85,7 @@ export class Grid{
 
     drawGameOver(){
         
-        this.removeCells();
+        this.#removeCells();
 
         for(let i = 0; i < this.cell.length; i++){
 
@@ -119,7 +119,7 @@ export class Grid{
 
     drawVictory(){
 
-        this.removeCells();
+        this.#removeCells();
 
         let mex = document.createElement("div");
         mex.innerHTML = `<img src="./img/victory.svg" alt="victory" class="al-game-mex">`
@@ -129,7 +129,7 @@ export class Grid{
         document.getElementsByTagName("main")[0].appendChild(mex);
     }
 
-    removeCells(){
+    #removeCells(){
 
         for(let i = 0; i < this.cell.length; i++)
             for(let i2 = 0; i2 < this.cell[i].length; i2++)
